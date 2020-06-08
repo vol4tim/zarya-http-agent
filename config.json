@@ -1,0 +1,31 @@
+{
+  "DEBUG": false,
+  "HOST": "127.0.0.1",
+  "PORT": "3000",
+  "SSL_ENABLE": false,
+  "SSL": {
+    "key": "",
+    "cer": ""
+  },
+  "IPFS_PROVIDER": { "host": "localhost", "port": "5001", "protocol": "http" },
+  "WEB3_PROVIDER": "wss://mainnet.infura.io/ws/v3/...............",
+  "ROBONOMICS": {
+    "account": {
+      "privateKey": "0x000...............",
+      "isSignPrefix": true
+    },
+    "ens": {
+      "address": "",
+      "suffix": "eth",
+      "version": 5
+    },
+    "lighthouse": "airalab.lighthouse.5.robonomics.eth"
+  },
+  "DEMAND": {
+    "model": "QmPtLLKhUhoXQ2WaQkdpz7NSMZh48hvA3uUNiBHjMzyxjz",
+    "token": "0x2a9688d4FfD94FE6C4447f60B7b25BE0a1ab87b4",
+    "cost": 100,
+    "validator": "0x0000000000000000000000000000000000000000",
+    "validatorFee": 0
+  }
+}
