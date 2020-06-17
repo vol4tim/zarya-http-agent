@@ -8,8 +8,12 @@ const options = {
     handleExceptions: false,
     format: winston.format.combine(
       winston.format.timestamp(),
-      winston.format.printf(({ level, message, timestamp }) => {
-        return `[${level.toUpperCase()}] ${timestamp}: ${message}`;
+      winston.format.printf(({ level, message, timestamp, ...meta }) => {
+        return `[${level.toUpperCase()}] ${timestamp}: ${message} ${
+          meta && Object.keys(meta).length > 0 && meta.constructor === Object
+            ? JSON.stringify(meta, null, "\t")
+            : ""
+        }`;
       })
     ),
     maxsize: 1024 * 1024 * 5, // 5MB
@@ -21,8 +25,12 @@ const options = {
     format: winston.format.combine(
       winston.format.colorize(),
       winston.format.timestamp(),
-      winston.format.printf(({ level, message, timestamp }) => {
-        return `[${level}] ${timestamp}: ${message}`;
+      winston.format.printf(({ level, message, timestamp, ...meta }) => {
+        return `[${level}] ${timestamp}: ${message} ${
+          meta && Object.keys(meta).length > 0 && meta.constructor === Object
+            ? JSON.stringify(meta, null, "\t")
+            : ""
+        }`;
       })
     ),
   },
@@ -42,6 +50,7 @@ const logger = winston.createLogger({
   ],
   exceptionHandlers: [new winston.transports.File(options.exception)],
   format: winston.format.combine(
+    winston.format.errors({ stack: true }),
     winston.format.timestamp(),
     winston.format.printf(({ level, message, timestamp, ...meta }) => {
       return `[${level.toUpperCase()}] ${timestamp}: ${message} \n${JSON.stringify(

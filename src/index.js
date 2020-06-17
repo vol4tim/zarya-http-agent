@@ -22,7 +22,7 @@ server.listen(config.PORT, config.HOST, () => {
     logger.info("robonomics ready");
     robonomics.onDemand(config.DEMAND.model, (demand) => {
       if (config.DEBUG) {
-        logger.info("demand", demand);
+        logger.info(`demand ${JSON.stringify(demand.toObject())}`);
       }
     });
   });

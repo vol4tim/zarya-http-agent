@@ -27,7 +27,12 @@ export default {
       url_manufacture: req.body.URL_manufacture,
     };
 
-    send(data, (r) => {
+    send(data, (e, r) => {
+      if (e) {
+        return res.send({
+          error: e.message,
+        });
+      }
       return res.send({
         order: r,
       });
