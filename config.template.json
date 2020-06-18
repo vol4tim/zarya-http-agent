@@ -22,7 +22,7 @@
     "lighthouse": "airalab.lighthouse.5.robonomics.eth"
   },
   "DEMAND": {
-    "model": "QmRdP9Cd5TpqWUnQF64H26ek1mjjfVs2RAXSLnYrx5QVoS",
+    "model": "QmRZ4hNBbpzq7oZBkRtHcEcpSoff4hDF3kLKR3nEyxeED3",
     "token": "0x2a9688d4FfD94FE6C4447f60B7b25BE0a1ab87b4",
     "cost": 100,
     "validator": "0x0000000000000000000000000000000000000000",

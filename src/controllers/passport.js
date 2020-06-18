@@ -6,17 +6,30 @@ export default {
       cylinder_agent_container: req.body.cylinder.agent_container,
       cylinder_serial_number: req.body.cylinder.serial_number,
       cylinder_nano_protection: req.body.cylinder.nano_protection,
-      cylinder_test_date: req.body.cylinder.test_date,
+      cylinder_test_start_test_date: req.body.cylinder.test.start_test_date,
+      cylinder_test_start_test_pressure:
+        req.body.cylinder.test.start_test_pressure,
+      cylinder_test_end_test_date: req.body.cylinder.test.end_test_date,
+      cylinder_test_end_test_pressure: req.body.cylinder.test.end_test_pressure,
+      cylinder_test_total_test_time: req.body.cylinder.test.total_test_time,
       cylinder_production_date: req.body.cylinder.production_date,
       cylinder_next_date_inspection: req.body.cylinder.next_date_inspection,
       cylinder_file: req.body.cylinder.file,
       valve_serial_number: req.body.valve.serial_number,
-      valve_test_date: req.body.valve.test_date,
+      valve_test_start_test_date: req.body.valve.test.start_test_date,
+      valve_test_start_test_pressure: req.body.valve.test.start_test_pressure,
+      valve_test_end_test_date: req.body.valve.test.end_test_date,
+      valve_test_end_test_pressure: req.body.valve.test.end_test_pressure,
+      valve_test_total_test_time: req.body.valve.test.total_test_time,
       valve_production_date: req.body.valve.production_date,
       pressure_gauge_serial_number: req.body.pressure_gauge.serial_number,
       pressure_gauge_date_inspection: req.body.pressure_gauge.date_inspection,
       module_serial_number: req.body.module.serial_number,
-      module_test_date: req.body.module.test_date,
+      module_test_start_test_date: req.body.module.test.start_test_date,
+      module_test_start_test_pressure: req.body.module.test.start_test_pressure,
+      module_test_end_test_date: req.body.module.test.end_test_date,
+      module_test_end_test_pressure: req.body.module.test.end_test_pressure,
+      module_test_total_test_time: req.body.module.test.total_test_time,
       module_empty_weight: req.body.module.empty_weight,
       module_file: req.body.module.file,
       filling_сlean_аgent: req.body.filling.сlean_аgent,
@@ -34,7 +47,7 @@ export default {
         });
       }
       return res.send({
-        order: r,
+        order: r.signature,
       });
     });
   },
