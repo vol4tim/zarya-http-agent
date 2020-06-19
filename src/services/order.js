@@ -1,13 +1,13 @@
 import { getObjectiveByData } from "./rosbag";
-import robonomics from "./robonomics";
+import getRobonomics from "./robonomics";
 import config from "../../config.json";
 import logger from "./logger";
 
 const list = {};
 
-function getDeadline() {
+function getDeadline(web3) {
   return new Promise((resolve, reject) => {
-    robonomics.web3.eth.getBlock("latest", (e, r) => {
+    web3.eth.getBlock("latest", (e, r) => {
       if (e) {
         return reject(e);
       }
@@ -25,7 +25,9 @@ export function getOrder(hash) {
 
 export async function send(data, cb) {
   try {
-    const deadline = await getDeadline();
+    const robonomics = getRobonomics();
+
+    const deadline = await getDeadline(robonomics.web3);
     const objective = await getObjectiveByData(data);
 
     const msg = {
@@ -58,7 +60,7 @@ export async function send(data, cb) {
 
     resultListener = robonomics.onResult((report) => {
       if (config.DEBUG) {
-        logger.info(`offer ${JSON.stringify(report.toObject())}`);
+        logger.info(`report ${JSON.stringify(report.toObject())}`);
       }
       if (
         demand !== null &&

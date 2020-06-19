@@ -1,7 +1,15 @@
 import { send, getOrder } from "../services/order";
+import { check } from "../services/ipfs";
+import { runRobonomics } from "../services/robonomics";
+import logger from "../services/logger";
 
 export default {
-  create(req, res) {
+  async create(req, res) {
+    if (!check()) {
+      await runRobonomics();
+      logger.info("robonomics reinit ready");
+    }
+
     const data = {
       cylinder_agent_container: req.body.cylinder.agent_container,
       cylinder_serial_number: req.body.cylinder.serial_number,

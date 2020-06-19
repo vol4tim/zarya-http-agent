@@ -8,6 +8,10 @@
     "cer": ""
   },
   "IPFS_PROVIDER": { "host": "localhost", "port": "5001", "protocol": "http" },
+  "IPFS_PROVIDER_AUTH": {
+    "username": "",
+    "password": ""
+  },
   "WEB3_PROVIDER": "wss://mainnet.infura.io/ws/v3/...............",
   "ROBONOMICS": {
     "account": {

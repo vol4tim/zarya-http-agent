@@ -3,7 +3,7 @@ import cors from "cors";
 import createServer from "./server";
 import passportRouter from "./routes/passport";
 import logger from "./services/logger";
-import robonomics from "./services/robonomics";
+import { runRobonomics } from "./services/robonomics";
 import config from "../config.json";
 
 const app = express();
@@ -18,12 +18,7 @@ app.get("/", function (req, res) {
 
 server.listen(config.PORT, config.HOST, () => {
   logger.info("Web listening " + config.HOST + " on port " + config.PORT);
-  robonomics.ready().then(() => {
-    logger.info("robonomics ready");
-    robonomics.onDemand(config.DEMAND.model, (demand) => {
-      if (config.DEBUG) {
-        logger.info(`demand ${JSON.stringify(demand.toObject())}`);
-      }
-    });
+  runRobonomics().then(() => {
+    logger.info("robonomics init ready");
   });
 });

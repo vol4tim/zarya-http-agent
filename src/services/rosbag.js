@@ -1,6 +1,6 @@
 import { open } from "rosbag";
 import Bag, { Time, messages } from "rosbag-write";
-import ipfs from "./ipfs";
+import getIpfs from "./ipfs";
 
 export function read(data, cb, options = {}) {
   return open(data).then((bag) => {
@@ -43,6 +43,7 @@ async function getRosbag(data) {
 
 export async function getObjectiveByData(data) {
   const buf = await getRosbag(data);
+  const ipfs = getIpfs();
   const res = await ipfs.add(buf);
   return res[0].hash;
 }
