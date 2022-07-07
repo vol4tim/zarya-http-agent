@@ -28,7 +28,7 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "ipfs-api": "^26.1.2",
-    "moment": "^2.27.0",
+    "moment": "^2.29.4",
     "robonomics-js": "^0.6.3",
     "rosbag": "^2.3.2",
     "rosbag-write": "^1.0.0",
